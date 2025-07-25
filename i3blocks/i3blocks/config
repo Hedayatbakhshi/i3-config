@@ -1,0 +1,127 @@
+[brightness]
+label=
+command=echo "  $(light -G | cut -d'.' -f 1)"
+interval=1
+signal=10
+color=#6ac496
+
+
+[load_average]
+label=load
+command=load_average/load_average
+interval=5
+color=#9cb339
+
+[wifi]
+label=
+instance=wlp0s20f3
+command=~/.config/i3blocks/wifi/wifi
+interval=5
+separator=false
+color=#9ff5ef
+
+
+#ip_address
+[iface]
+#instance=wlan0
+label=
+command=iface/iface
+color=#00FF00
+interval=5
+separator=false
+
+[greetings]
+color=#f5af19
+command=echo "Hi, Hedayatullah"
+interval=once
+
+[bandwidth]
+command=bandwidth/bandwidth
+interval=1
+color=#21d6eb
+
+[mail]
+label= 
+command=~/.config/i3/.mail.sh.x
+interval=100
+color=#7F00FF 
+
+[WEATHER_SIGNALER]
+command=~/.config/i3blocks/weather/weather_signaler
+interval=once
+
+[time]
+label=
+command=date '+ %a %d %b, %Y %r'
+interval=1
+color=#e5afed
+
+[DISK]
+command=df -h / | awk '/\//{ printf(" 💾 %4s/%s \n", $4, $2) }'
+interval=2
+color=#f244ca
+
+[BATTERY]
+command=~/.config/i3blocks/battery/battery_info.sh
+interval=3
+
+[CPU]
+label=
+full_text= MY_CPU:  0.00% @ +00.0°C 
+command=~/.config/i3blocks/cpu/cpu_info.sh
+interval=repeat
+color=#00B4EB
+
+
+[memory]
+label= 
+command=memory/memory
+interval=2
+color=#05b396
+
+[SOUND_BURST]
+command=~/.config/i3blocks/sound/sound_burst.sh
+interval=once
+
+[SOUND]
+full_text= 🔇 0% 
+command=~/.config/i3blocks/sound/sound_info.sh
+interval=0
+signal=1
+color=#9cd613
+
+#[WEATHER]
+#command=~/.config/i3blocks/weather/weather_info.sh
+#interval=300
+#color=#FEC925
+#signal=2
+
+#[Kernel]
+#label=
+#command=uname -r
+#interval=once
+#color=#43f0e4
+
+
+
+#[bandwidth]
+#instance=enp2s0
+#interval=5
+
+
+[mediaplayer]
+label=
+instance=vlc
+interval=5
+signal=10
+
+#[keyindicator]
+#instance=NUM
+#interval=once
+#signal=11
+
+
+# User-added function keys:
+bindsym XF86AudioMute         exec --no-startup-id pamixer -t     && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume  exec --no-startup-id pamixer -d 3   && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume  exec --no-startup-id pamixer -i 3   && pkill -RTMIN+1 i3blocks

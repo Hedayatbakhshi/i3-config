@@ -1,0 +1,231 @@
+set $mod Mod4
+
+# font -uw-ttyp0-medium-r-normal--18----c-90-iso10646-1
+font pango: Inter 12
+
+floating_modifier $mod
+
+
+
+# Mouse 
+bindsym $mod+Shift+m exec --no-startup-id ~/.config/input/mouse-gnome-style.sh
+exec_always --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
+
+# Background Wallpaper
+exec_always --no-startup-id feh --bg-fill ~/Wallpapers/pexels-rpnickson-2559941.jpg 
+
+exec --no-startup-id xset r rate 300 45
+
+exec --no-startup-id redshift
+
+
+# bindsym $mod+Return exec "GLFW_IM_MODULE=none kitty tmux attach new-session -A -s main"
+bindsym $mod+Return exec kitty tmux
+
+
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec rofi -show-icons -modi run#drun#window -show drun
+bindsym $mod+Shift+i exec --no-startup-id ~/apps/idea-IU-243.25659.59/bin/idea.sh 
+bindsym $mod+Ctrl+p exec --no-startup-id ~/.config/i3/powermenu.sh
+
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym Ctrl+$mod+Right exec --no-startup-id i3-msg workspace next
+bindsym Ctrl+$mod+Left exec --no-startup-id i3-msg workspace prev
+
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+v layout splitv
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+set $w1 "1:Dev"
+set $w2 "2:Web"
+set $w3 "3:Comms"
+set $w4 "4:Editor"
+set $w5 "5:Terminal"
+set $w6 "6:Tools"
+set $w7 "7:Media"
+set $w8 "8:Docs"
+set $w9 "9:VM"
+set $w0 "10:Misc"
+
+workspace $w1 output eDP1 HDMI1
+workspace $w2 output HDMI1 eDP1
+workspace $w3 output HDMI1 eDP1 
+workspace $w4 output HDMI1 eDP1 
+workspace $w5 output eDP1 HDMI1 
+
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w0
+
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w0
+
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+  bindsym Left  resize shrink width  10 px or 10 ppt
+  bindsym Down  resize grow   height 10 px or 10 ppt
+  bindsym Up    resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow   width  10 px or 10 ppt
+
+  bindsym h     resize shrink width  10 px or 10 ppt
+  bindsym j     resize grow   height 10 px or 10 ppt
+  bindsym k     resize shrink height 10 px or 10 ppt
+  bindsym l     resize grow   width  10 px or 10 ppt
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+
+# rename workspace
+# bindsym Ctrl+Shift+r exec i3-input -F 'rename workspace to "%s"' -P 'rename current workspace: '
+# enable special modes for some applications
+for_window [window_type="splash"] floating enable
+# for_window [class="MPlayer"] floating enable
+for_window [window_role=".*Setting.*|.*Preference.*"] floating enable # border normal
+for_window [class="xfontsel"] floating enable
+for_window [title="win0"] floating enable
+for_window [floating] move position center
+for_window [title="Conflicts" class="jetbrains-idea"] floating disable
+for_window [title="Merge Revisions.*" class="jetbrains-idea"] floating disable
+
+# always open some programs on specified workspace
+# assign [class="google-chrome"]  $w2
+# assign [window_role="browser"]  $w2
+
+set $mode_caps CAPS
+bindsym Caps_Lock mode "$mode_caps"
+#bindsym Shift+Caps_Lock mode "$mode_caps"
+#bindsym Ctrl+Caps_Lock mode "$mode_caps"
+#bindsym $alt+Caps_Lock mode "$mode_caps"
+mode "$mode_caps" {
+  bindsym Caps_Lock mode "default"
+  bindsym Shift+Caps_Lock mode "default"
+  bindsym Ctrl+Caps_Lock mode "default"
+  bindsym $alt+Caps_Lock mode "default"
+}
+
+# Brightness control using brightnessctl
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec "amixer -D default sset Master playback 5%+; kill -SIGRTMIN+1 $(pidof i3blocks)"
+bindsym XF86AudioLowerVolume exec "amixer -D default sset Master playback 10%-; kill -SIGRTMIN+1 $(pidof i3blocks)"
+bindsym XF86AudioMute exec "amixer -D default sset Master playback toggle; kill -SIGRTMIN+1 $(pidof i3blocks)"
+# sudo pacman -S mpc
+# systemctl --user enable mpd.service
+# systemctl --user start  mpd.service
+bindsym $mod+Shift+F7  exec notify-send -a mplayer -t 1000 mplayer "$(mpc volume -5)"
+bindsym $mod+Shift+F8  exec notify-send -a mplayer -t 1000 mplayer "$(mpc volume +5)"
+bindsym $mod+Shift+F9  exec notify-send -a mplayer -t 1000 mplayer "$(mpc single)"
+bindsym $mod+Shift+F10 exec notify-send -a mplayer -t 1000 mplayer "$(mpc prev)"
+bindsym $mod+Shift+F11 exec notify-send -a mplayer -t 1000 mplayer "$(mpc toggle)"
+bindsym $mod+Shift+F12 exec notify-send -a mplayer -t 1000 mplayer "$(mpc next)"
+
+# Panel setup
+bar {
+  tray_output HDMI1
+  tray_output eDP1
+  # strip_workspace_numbers yes
+  status_command i3blocks
+  # font -uw-ttyp0-medium-r-normal--18----c-90-iso10646-1
+  font pango: Jetbrains Mono 11
+
+  bindsym button4 exec amixer -M -c PCH sset Master playback  5%+
+  bindsym button5 exec amixer -M -c PCH sset Master playback 10%-
+
+  position top
+  separator_symbol "│"
+  colors {
+    separator #268bd2
+    background #002b36
+    statusline #839496
+    focused_workspace #fdf6e3 #6c71c4 #fdf6e3
+    active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    inactive_workspace #002b36 #586e75 #002b36
+    #urgent_workspace #d33682 #d33682 #fdf6e3
+    }
+  
+    }
+
+client.focused #586e75 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #073642 #073642 #93a1a1 #002b36
+client.unfocused #002b36 #002b36 #586e75 #002b36
+#client.urgent #dc322f #dc322f #fdf6e3 #dc322f
+
+#Window_colors          border  backgr. text    indicator
+
+# bindsym $mod+Ctrl+s exec maim -m 5 ~/Pictures/screenshots/$(date +%F_%H%M%S).png
+bindsym $mod+Shift+s exec /usr/bin/flameshot gui
+#bindsym $mod+Ctrl+l exec ~/lock-screen.sh -r
+#bindsym $mod+Ctrl+l exec xtrlock
+
+workspace_layout tabbed
+hide_edge_borders both
+new_window none
+for_window [class="^.*"] border none
+for_window [title="win0"] floating enable
+# gaps inner 1
+# gaps outer 1
+exec --no-startup-id setxkbmap -layout us,ir -option grp:alt_shift_toggle
+#exec --no-startup-id "
+
+
+# Cycle between wallpapers in i3wm
+bindsym $mod+F5 exec --no-startup-id ~/.config/i3/cycle-wallpaper.sh
+
+# Execute thunar file manager
+bindsym $mod+F12 exec nautilus --new-window
+
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id xsetroot -cursor_name left_ptr
+
+bindsym $mod+Ctrl+l exec i3lock -c 000000  # black background
+

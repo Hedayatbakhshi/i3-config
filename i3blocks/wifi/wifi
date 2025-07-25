@@ -1,0 +1,43 @@
+
+#!/bin/bash
+
+# Get interface from i3blocks instance or auto-detect
+INTERFACE="${BLOCK_INSTANCE:-$(ls /sys/class/net/ | grep '^w' | head -n1)}"
+
+# Exit if no wireless device exists
+[[ ! -d /sys/class/net/${INTERFACE}/wireless ]] && exit
+
+# If interface is down
+if [[ "$(cat /sys/class/net/${INTERFACE}/operstate)" = 'down' ]]; then
+    echo "down"
+    echo "down"
+    echo "#FF0000"
+    exit
+fi
+
+# Get signal quality
+QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+
+# If no quality info, fallback
+if [[ -z "$QUALITY" ]]; then
+    echo "N/A"
+    echo "N/A"
+    echo "#FF0000"
+    exit
+fi
+
+# Output
+echo " $QUALITY%"
+echo " $QUALITY%"
+
+# Set color based on quality
+if [[ $QUALITY -ge 80 ]]; then
+    echo "#00FF00"
+elif [[ $QUALITY -ge 60 ]]; then
+    echo "#FFF600"
+elif [[ $QUALITY -ge 40 ]]; then
+    echo "#FFAE00"
+else
+    echo "#FF0000"
+fi
+

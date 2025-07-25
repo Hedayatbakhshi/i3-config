@@ -1,0 +1,98 @@
+
+[strength]
+command=echo "$(iw dev wlo1 link | grep signal | cut -d " " -f 2-)"
+interval=10
+color=#cb4b16
+
+[greetings]
+color=#f5af19
+command=echo "Hello, $USER!"
+interval=once
+
+[mail]
+label= 
+command=/home/nemat/.config/i3/.mail.sh.x
+interval=100
+color=#7F00FF 
+
+[WEATHER_SIGNALER]
+command=~/.config/i3blocks/weather/weather_signaler
+interval=once
+
+[time]
+command=date +"%a, %d %b - %H:%M:%S"
+interval=1
+
+[DISK]
+command=df -h / | awk '/\//{ printf(" 💾 %4s/%s \n", $4, $2) }'
+interval=2
+color=#C9E3DB
+
+[BATTERY]
+command=~/.config/i3blocks/battery/battery_info.sh
+interval=3
+
+[CPU]
+label=
+full_text= MY_CPU:  0.00% @ +00.0°C 
+command=~/.config/i3blocks/cpu/cpu_info.sh
+interval=repeat
+color=#00B4EB
+
+
+
+[MEM]
+command=free -h | awk '/Mem:/ { printf("MEM: 🐏 %5s/%s \n", $3, $2) }'
+interval=1
+color=#FEC925
+
+[SOUND_BURST]
+command=~/.config/i3blocks/sound/sound_burst.sh
+interval=once
+
+[SOUND]
+full_text= 🔇:  0% 
+command=~/.config/i3blocks/sound/sound_info.sh
+interval=0
+signal=1
+
+[WEATHER]
+command=~/.config/i3blocks/weather/weather_info.sh
+interval=300
+color=#FEC925
+signal=2
+
+[Kernel]
+label=
+command=uname -r
+interval=once
+
+[wifi]
+instance=wlp3s0
+interval=10
+separator=false
+
+[bandwidth]
+label=
+instance=enp2s0
+interval=5
+
+[mediaplayer]
+label=
+instance=spotify
+interval=5
+signal=10
+
+[keyindicator]
+instance=NUM
+interval=once
+signal=11
+
+[ip-address]
+label=
+interval=60
+
+# User-added function keys:
+bindsym XF86AudioMute         exec --no-startup-id pamixer -t     && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume  exec --no-startup-id pamixer -d 3   && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume  exec --no-startup-id pamixer -i 3   && pkill -RTMIN+1 i3blocks
