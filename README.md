@@ -21,11 +21,11 @@ This setup is optimized for a clean and productive tiling window experience on *
 ~/scripts/ - Custom scripts (e.g., wallpaper cycling)
 
 ---
-
 ## NOTE
-Copy the `i3`, `polybar`, `rofi` folders into your ~/.config directory.  
-Also copy `.Xresources` to your home directory (`~`) if you use it.  
-And move the `scripts/` folder to your home if needed.
+- Copy the [`i3`](https://github.com/Hedayatbakhshi/i3-config/tree/master/i3), [`i3blocks`](https://github.com/Hedayatbakhshi/i3-config/tree/master/i3blocks), [`polybar`](https://github.com/Hedayatbakhshi/i3-config/tree/master/polybar), and [`rofi`](https://github.com/Hedayatbakhshi/i3-config/tree/master/rofi) folders into your `~/.config` directory  
+- Copy [`.Xresources`](https://github.com/Hedayatbakhshi/i3-config/blob/master/.Xresources) to your home directory (`~`) if you use it  
+- Move the [`scripts`](https://github.com/Hedayatbakhshi/i3-config/tree/master/scripts) folder to your home directory if needed
+
 
 ---
 ## Screenshots
