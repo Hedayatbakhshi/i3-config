@@ -22,6 +22,24 @@ This setup is optimized for a clean and productive tiling window experience on *
 
 ---
 ## NOTE
+🛠️ Installing i3 Window Manager
+
+You need to install i3-wm first before using this config.
+
+    For Arch Linux, run:
+    sudo pacman -S i3-wm
+
+    For Ubuntu/Debian systems, run:
+    sudo apt install i3
+
+    For Fedora, run:
+    sudo dnf install i3
+
+    For openSUSE, run:
+    sudo zypper install i3
+
+    For other Linux distributions, please use your package manager or visit https://i3wm.org/docs/repositories.html for detailed instructions.
+
 - Copy the [`i3`](https://github.com/Hedayatbakhshi/i3-config/tree/master/i3), [`i3blocks`](https://github.com/Hedayatbakhshi/i3-config/tree/master/i3blocks), [`polybar`](https://github.com/Hedayatbakhshi/i3-config/tree/master/polybar), and [`rofi`](https://github.com/Hedayatbakhshi/i3-config/tree/master/rofi) folders into your `~/.config` directory  
 - Copy [`.Xresources`](https://github.com/Hedayatbakhshi/i3-config/blob/master/.Xresources) to your home directory (`~`) if you use it  
 - Move the [`scripts`](https://github.com/Hedayatbakhshi/i3-config/tree/master/scripts) folder to your home directory if needed
