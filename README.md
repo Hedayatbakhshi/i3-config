@@ -21,6 +21,13 @@ This setup is optimized for a clean and productive tiling window experience on *
 ~/scripts/ - Custom scripts (e.g., wallpaper cycling)
 
 ---
+
+## NOTE
+Copy the `i3`, `polybar`, `rofi` folders into your ~/.config directory.  
+Also copy `.Xresources` to your home directory (`~`) if you use it.  
+And move the `scripts/` folder to your home if needed.
+
+---
 ## Screenshots
 <img width="1916" height="1080" alt="image" src="https://github.com/user-attachments/assets/63054bcb-586f-45ec-8749-ca10477bd092" />
 <img width="1919" height="1080" alt="image" src="https://github.com/user-attachments/assets/f835f53c-4ade-4d15-b6a5-e7db8130095e" />
@@ -46,17 +53,15 @@ This setup is optimized for a clean and productive tiling window experience on *
    git clone https://github.com/Hedayatbakhshi/i3-config.git
 
 ---
-## For Arch Linux
+## 🐧 For Arch Linux
 
-  - Designed for Arch Linux, but should work on other distros with small tweaks.
+    Designed for Arch Linux, but should work on other distros with small tweaks.
+
+    You may need to install required packages like: feh, playerctl, xbacklight, network-manager-applet, etc.
 
 ## 🤝 Contributing
 
 Feel free to contribute improvements or customizations!
-
-    Open an Issue if you find bugs or have ideas.
-
-    Submit a Pull Request with your improvements.
 
 
 
